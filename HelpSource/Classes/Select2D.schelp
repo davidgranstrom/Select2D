@@ -1,0 +1,52 @@
+title:: Select2D
+summary:: Mix one output from a two-dimensional array of inputs
+categories:: UGens>Multichannel>Select
+related:: Classes/VSelect, Classes/SelectX
+
+description::
+The output is mixed from a two-dimensional array of inputs. 
+Unlike the other link::Classes/Select:: UGen classes, the teletype::select:: argument is calculated
+internally to allow support for uneven shapes of the input array(s). 
+
+classmethods::
+private:: new
+
+method:: ar, kr
+
+argument:: select
+a link::Classes/Point:: or any stereo signal 
+note::always use a range between 0 - 1::
+argument:: array
+a two-dimensional link::Classes/Array::
+
+examples::
+code::
+// Selecting an input source is similar to multidimensional array accessing
+// index of "1" is always equal to the last item of the array.
+(
+    play { 
+        var input = [ 
+            [ DC.ar(0), DC.ar(0.25) ],
+            [ DC.ar(0.5), DC.ar(0.75), DC.ar(1) ],
+        ];
+        Select2D.ar(         
+            DC.ar([ 0, 1 ]), // input[0][1]
+            input            
+        ).poll; 
+        Silent.ar; 
+    }
+)
+::
+code::
+// Use a Point to express the the array index
+(
+    play { 
+        var point = MouseX.kr(0,1)@MouseY.kr(1,0); // top-right of the screen is Point(0,0)
+        var input = [ 
+            [ SinOsc.ar, SinOsc.ar(550) ],
+            [ Pulse.ar, Pulse.ar(660)   ],
+        ] * 0.25;
+        Select2D.ar(point, input); 
+    }
+)
+::
