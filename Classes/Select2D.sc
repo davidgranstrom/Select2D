@@ -1,6 +1,4 @@
-// crossfade between objects in a two-dimensional space
-// dkg 2012
-//
+
 Select2D {
 
     *new {|rate, select, array|
