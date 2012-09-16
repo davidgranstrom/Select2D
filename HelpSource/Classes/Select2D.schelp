@@ -27,14 +27,12 @@ code::
 // index[1] is always equal to the last item of the array.
 (
     x = play { 
+        var point = DC.ar([ 0, 1 ]); // input[0][1]
         var input = [ 
             [ DC.ar(0), DC.ar(0.25), DC.ar(0.5) ],
             [ DC.ar(0.75), DC.ar(1) ],
         ];
-        Select2D.ar(         
-            DC.ar([ 0, 1 ]), // input[0][1]
-            input            
-        ).poll; 
+        Select2D.ar(point, input).poll;
         Silent.ar; 
     };
 )
@@ -44,10 +42,10 @@ code::
 // Use a Point to express the array index
 (
     x = play { 
-        var point = MouseX.kr(0,1)@MouseY.kr(1,0); // top-right of the screen is Point(0,0)
+        var point = MouseX.kr@MouseY.kr; // top-left of the screen is Point(0,0)
         var input = [ 
             [ SinOsc.ar, SinOsc.ar(550) ],
-            [ Pulse.ar, Pulse.ar(660)   ],
+            [ Pulse.ar(660), Pulse.ar   ],
         ] * 0.25;
         Select2D.ar(point, input); 
     };
