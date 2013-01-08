@@ -1,3 +1,5 @@
+// Mix one output from a two-dimensional array of inputs
+// dkg 2012
 
 Select2D {
 

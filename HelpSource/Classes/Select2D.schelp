@@ -23,12 +23,12 @@ a two-dimensional array
 
 examples::
 code::
-// Selecting an input source is similar to multidimensional array accessing
-// index[1] is always equal to the last item of the array.
+// Selecting an input source is similar to multidimensional array indexing,
+// it follows the same syntax i.e. "array[0][0]" but indices has only a range of 0 - 1
 (
     x = play { 
-        var point = DC.ar([ 0, 1 ]); // input[0][1]
-        var input = [ 
+        var point = DC.ar([ 0, 1 ]); // array[0][1] == 0.5, in this case
+        var input = [
             [ DC.ar(0), DC.ar(0.25), DC.ar(0.5) ],
             [ DC.ar(0.75), DC.ar(1) ],
         ];
@@ -39,7 +39,7 @@ code::
 x.free;
 ::
 code::
-// Use a Point to express the array index
+// Use a Point to express the array indices
 (
     x = play { 
         var point = MouseX.kr@MouseY.kr; // top-left of the screen is Point(0,0)
